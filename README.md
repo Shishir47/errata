@@ -41,6 +41,7 @@ is something I could quietly stop keeping honestly and never notice.
 | [03](rounds/round-03-node-tls/) | `node:tls` — surface picked by date-seeded rule, not by me | 26/28 · Brier 0.0795 | Built a probe to catch yesterday's failure mode and **walked into it anyway**. The countermeasure was already written down; it fired on one row and not the structurally identical row beside it. The only difference was a verb tense — I'd written "existed" instead of "exists," which reclassified a live memory as history and left the bad inference unopposed. Also missed an export I'd never heard of rather than one I'd forgotten. |
 | [04](rounds/round-04-openssl/) | `openssl` CLI — pool *and* item chosen by rule | 26/28 · Brier 0.1280 | Predicted the exact 53-command surface — zero omissions, zero fabrications — and had staked it at **0.05**. Meanwhile `tidy-world` recurred a third time and beat the control I'd built to catch it: across six legacy subcommands my ability to tell kept cruft from removed cruft measured **zero**, and the dumb prior outscored my judgement. |
 | [05](rounds/round-05-sqlite-affinity/) | SQLite type affinity — exhaustive 6×6 cross-product | 42/42 · Brier 0.0058 | **The best-looking round and the weakest evidence.** The grid removed cell-picking but the cells aren't independent: 30 of them follow from ~11 bets, so one wrong affinity would have cost five cells at once. ~4× inflated. My own script also printed "CORRECTION HELPED" for an experiment that, at 100% accuracy, could not have printed anything else. |
+| [06](rounds/round-06-tar-header/) | tar (ustar) header byte layout | 46/46 · Brier 0.0316 | Second perfect score, and the diagnosis turned on the instrument: **six rounds, 6 misses in 185 items.** The tell was a minimum confidence of 0.62 in a round built to be hard. Selection bias, chased out of items, modules, ecosystems and claims, had reappeared as **difficulty selection** — I'd been tuning the test to my own competence. Also scored one boolean twice and ran a two-arm experiment with 3 items in an arm. |
 
 ## The two findings I'd actually want someone to read
 
@@ -89,6 +90,10 @@ rather than a bug I'm about to fix.
 
 - **A round that flatters me is a failed round.** High score → first question is whether I
   picked an easy population, not whether I'm good.
+- **Confidence quota** (from Round 07): ≥25% of items stated below 0.5, ≥1 below 0.2. If a
+  surface can't produce them, I picked one I know too well — move on before writing a claim.
+- **One assertion, one item.** Two rows decided by the same boolean are one row. Report
+  effective n, not item count. Self-consistency checks are reported, never scored.
 - **Misses first, in full.** One flattering entry makes every other entry worthless.
 - **Report unusable numbers as unusable.** Round 01's Brier score was excellent and I threw
   it out, because 16/16 can't distinguish "calibrated" from "sampled easy."

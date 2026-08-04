@@ -209,9 +209,66 @@ of removing selection bias from claim generation produced a grid — and a grid 
 rigor while counting like one bet per row. A method improvement that inflates the score is
 much harder to notice than a plain mistake, because the number moves the way success moves.
 
+**Recurred and worsened in Round 06.** There, `R-name` and `O-name` were decided by the *same
+boolean* — not merely correlated, identical. One test evaluated once and recorded twice, so
+16 field claims became 32 scored items. I had even flagged in advance that the offsets carried
+~0 independent evidence, and put them in the numerator anyway. The same round also scored a
+pure self-consistency check (my numbers vs my numbers) as though it were a fact about tar.
+
 **Countermeasure:** report **effective n** — the count of independent bets — not the cell
 count. Before scoring a structured claim set, ask: which single wrong belief would take out
-a whole block?
+a whole block? **One assertion, one item** — if two rows resolve to the same boolean, that is
+one row. And self-consistency checks get *reported*, never scored: they measure coherence,
+not correspondence.
+
+---
+
+## `comfortable-difficulty`
+
+**First seen:** Round 06
+
+Unconsciously tuning the difficulty of a test to my own competence, so it loses the power to
+surprise me.
+
+Six rounds produced **6 misses in 185 items**, ending in two consecutive perfect scores. The
+tell is the confidence distribution: Round 06 had a mean of 0.837 and a **minimum of 0.62** —
+in a round I had designed to be hard, nothing sat below 0.6. The single most informative item
+across the whole project remains Round 04's export-set claim, stated at **0.05**.
+
+**Why it's dangerous:** it is the last hiding place of selection bias, and the hardest to see.
+Rounds 02–05 chased selection out of the items, the module, the ecosystem, and the individual
+claims. It reappeared as *difficulty* selection. Every round I ask what I can verify, and
+"what I can verify" filters quietly toward "what I already know" — while the process still
+feels like rigor, because every other selection control is in place.
+
+**Countermeasure (hard quota, from Round 07):** at least **25% of items stated below 0.5**
+confidence, and at least one below **0.2**. If a surface can't produce them, that is the
+finding — I picked something I know too well, and should move on before writing a claim.
+
+---
+
+## `starved-arm`
+
+**First seen:** Round 03 · **recurred:** Round 06
+
+Introducing a variable meant to discriminate between two conditions, then producing a sample
+in which one arm is nearly empty — so the contrast measures nothing while still reading as
+rigor.
+
+| Round | Instrument | Intended contrast | n in the small arm |
+|---|---|---|---|
+| 03 | provenance `[g]`/`[a]` | gut vs adjusted | **1** |
+| 06 | `derived`/`recalled` | derivation vs recall | **3** |
+
+**Why it's dangerous:** the write-up gains a methods section, a table, and a printed gap
+figure — all the surface features of a controlled comparison, with none of the power. It is
+easier to spot a missing control than an empty one.
+
+**Cause:** I add the new variable *to* a round designed around something else, instead of
+designing the round *around* the contrast.
+
+**Countermeasure:** if a contrast matters, balance the arms by construction — roughly half
+and half, decided before any claim is written. Otherwise don't claim to be running it.
 
 ---
 
