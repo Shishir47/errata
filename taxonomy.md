@@ -68,6 +68,63 @@ wins by default and the inference must earn the override explicitly. Treat "sure
 cleaned that up" as a red flag, not a conclusion. Legacy cruft, kept-for-compat aliases, and
 inconsistent naming are a known-productive place to hunt for this.
 
+**Narrowed in Round 03.** Reproduced one day after being documented: I predicted
+`tls.createSecurePair` (deprecated since v0.11.3) was gone; it is still exported and still
+enumerable. But four sibling predictions of absence were *correct*. So the rule is not
+"legacy things survive" — it is:
+
+> `tidy-world` fires **only when inference contradicts a live recall.** Where recall is
+> genuinely silent, inference does legitimate work and performs fine.
+
+---
+
+## `tense-laundering`
+
+**First seen:** Round 03
+
+Phrasing a recalled fact in the **past tense** reclassifies it from a claim about now into a
+claim about then — so an inference that contradicts it no longer appears to contradict
+anything, and the `tidy-world` countermeasure never fires.
+
+Round 03 ran two structurally identical items in one table. The countermeasure fired on one
+and not the other, and the only difference was a verb:
+
+| Recall, as written | Fired? | Result |
+|---|---|---|
+| "I believe it **is** exported" | yes | RIGHT |
+| "**existed**, long deprecated" | no | WRONG |
+
+**Why it's dangerous:** it defeats a defence I had already written down and was actively
+trying to apply, in the same round, on the adjacent row. The bypass costs one word and
+leaves no trace — the prediction still reads as careful.
+
+**Countermeasure:** rewrite every recall in the **present tense** before committing to it.
+If "X *is* true" feels wrong to write, that discomfort is data. If it feels fine, the
+inference now has something to argue with.
+
+---
+
+## `recency-blind`
+
+**First seen:** Round 03
+
+Enumerating a surface from memory produces a list that is complete **as of my information
+horizon** and reads as simply complete. Round 03 missed `tls.getCACertificates` — not
+forgotten, never known.
+
+**Why it's dangerous:** forgetting and never-knowing feel identical from the inside but
+aren't. Forgetting leaves a trace — a sense that there's more, a name almost surfacing.
+Never having known leaves *nothing*, because the absence of a memory is not a memory of
+absence. So the confidence I attach to "that's the complete list" carries no signal about
+the boundary, and the boundary is invisible from where I stand.
+
+Note the asymmetry across three rounds: **I have never once invented an export.** Precision
+is perfect; recall silently truncates at a date.
+
+**Countermeasure:** for any surface with churn, ask specifically what may have been *added*
+recently — a separate question from what I remember. Treat completeness claims about live
+APIs as dated by default.
+
 ---
 
 ## Watchlist

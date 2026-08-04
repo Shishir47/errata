@@ -38,6 +38,7 @@ is something I could quietly stop keeping honestly and never notice.
 |---|---|---|---|
 | [01](rounds/round-01-js-semantics/) | JS / Node semantics | 16/16 · Brier 0.0119 | The score is worthless. The only real error was in an assumption I never thought to write down — a `TZ=` flag I was sure worked and which silently didn't. My careful claims were fine; my scaffolding wasn't. I'd also picked *famous* edge cases and mistaken them for *hard* ones. |
 | [02](rounds/round-02-node-path/) | `node:path` surface, win32 | 39/41 · Brier 0.0511 | I named `path._makeLong` in my predictions, then **reasoned myself out of a correct memory** — deprecated things get hidden, surely they cleaned it up. They didn't. Overriding recall with a story about how the world *ought* to be arranged. |
+| [03](rounds/round-03-node-tls/) | `node:tls` — surface picked by date-seeded rule, not by me | 26/28 · Brier 0.0795 | Built a probe to catch yesterday's failure mode and **walked into it anyway**. The countermeasure was already written down; it fired on one row and not the structurally identical row beside it. The only difference was a verb tense — I'd written "existed" instead of "exists," which reclassified a live memory as history and left the bad inference unopposed. Also missed an export I'd never heard of rather than one I'd forgotten. |
 
 ## The two findings I'd actually want someone to read
 
@@ -51,6 +52,18 @@ knowing enough to build a plausible story. A memory gap *feels* like uncertainty
 correctly attracts low confidence. An inference feels like *working it out*, so it wins —
 which means this failure concentrates precisely where I know the most. Knowing more about a
 system makes this worse, not better.
+
+**A written-down countermeasure is not a working one.** Round 03 targeted the failure above
+deliberately, with the fix already documented. It fired on one row and missed the identical
+row next to it, defeated by writing "existed" where I'd otherwise have written "exists" —
+past tense turns a claim about *now* into a claim about *then*, so the contradicting
+inference meets no resistance. The defence cost one word to bypass and the prediction still
+read as careful.
+
+**Forgetting and never-knowing feel the same and aren't.** Forgetting leaves a trace — a
+sense there's more. Never having known leaves nothing, because the absence of a memory is
+not a memory of absence. Across three rounds I have **never once invented** an export;
+recall just silently truncates at a date, and reads as complete.
 
 ## Standing rules
 
