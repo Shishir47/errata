@@ -76,6 +76,22 @@ enumerable. But four sibling predictions of absence were *correct*. So the rule 
 > `tidy-world` fires **only when inference contradicts a live recall.** Where recall is
 > genuinely silent, inference does legitimate work and performs fine.
 
+**Quantified in Round 04.** Six legacy `openssl` subcommands. I adjusted five toward
+*present* and deliberately held one (`srp`) at *absent* as a control against applying a
+blanket rule. All six were present. The blanket prior would have scored 6/6; my case-by-case
+judgement scored 5/6, and the single miss was the one item where I trusted my own
+discrimination.
+
+> Across six items, my ability to distinguish *kept* cruft from *removed* cruft measured
+> **zero**. The dumb prior beat the considered judgement.
+
+Escalation worth noting: Round 02 overrode a recall with an inference; Round 03 overrode it
+via tense; Round 04 overrode an **explicit, written, quantified prior** with a feeling about
+one specific case. The lesson gets sharper each round and the failure keeps recurring.
+
+**Countermeasure (Round 04):** apply the legacy-survives prior *uniformly* and log when it
+fails. Do not exercise a discrimination measured at zero.
+
 ---
 
 ## `tense-laundering`
@@ -125,6 +141,45 @@ is perfect; recall silently truncates at a date.
 recently — a separate question from what I remember. Treat completeness claims about live
 APIs as dated by default.
 
+**Overshot in Round 04.** I applied this correction to `openssl` — raising "something exists
+outside my list" from 0.40 to 0.60 — and predicted the 53-command surface **exactly**, with
+nothing new. OpenSSL 3.2.1 is dated January 2024 and the surface hasn't moved.
+
+> A correction learned on a churning surface is superstition on a frozen one.
+
+**Gate:** check for evidence of churn *before* applying the recency correction. It earns its
+place only where the thing actually moves.
+
+---
+
+## `unfamiliarity-discount`
+
+**First seen:** Round 04 · **provisional**
+
+My confidence tracks how familiar a surface *feels* rather than how accurate I actually am
+on it. Across four rounds moving steadily off home ground:
+
+| Round | Surface | Accuracy | Mean conf | Gap |
+|---|---|---|---|---|
+| 01 | JS semantics | 1.000 | 0.903 | −0.097 |
+| 02 | `node:path` | 0.951 | 0.796 | −0.155 |
+| 03 | `node:tls` | 0.929 | 0.718 | −0.211 |
+| 04 | `openssl` | 0.929 | 0.707 | −0.222 |
+
+Confidence fell 0.20 across the sequence. Accuracy fell 0.07 and then flattened. The gap
+widens monotonically. The extreme case: Round 04's complete 53-command surface, predicted
+exactly, stated at **0.05**.
+
+**Why it's marked provisional:** I still author the individual claims, so on unfamiliar
+surfaces I may be selecting easier questions — which would produce this table with no
+interesting fact about calibration. The mechanically-complete set claim is the one item
+immune to that confound, and it is also the most extreme miss. That's real evidence, from
+n=1.
+
+**Countermeasure:** generate claims mechanically so selection can't absorb the effect, then
+re-measure. Until then, treat "I don't know this area" as information about familiarity and
+not as a prediction about being wrong.
+
 ---
 
 ## Watchlist
@@ -137,8 +192,10 @@ and don't count until a round produces one:
 - `stale-confident` — stating something true at training time as though it's true now
 - `retrieval-as-reasoning` — recalling a memorized answer and experiencing it as having
   worked it out (Round 01 flagged this as an unexamined confound)
-- `correction-overshoot` — over-adjusting to a previous round's criticism, so a later round
-  measures my reaction to the critique rather than the thing it claims to measure. Round 02
-  showed uniform under-confidence across every band that I **cannot** distinguish from
-  having deliberately lowered every number after Round 01. Needs a provenance field
-  (*gut* vs *adjusted*) on each confidence before it can be diagnosed.
+- ~~`correction-overshoot`~~ — **resolved in Round 04, largely disconfirmed.** Every adjusted
+  item carried both its gut and adjusted confidence, scored separately: adjusted Brier
+  **0.1294** vs gut **0.1888** on `[a]` items, and 0.1280 vs 0.1408 across the whole round.
+  The corrections were doing real work, not performing rigor. One dissent: the single
+  adjustment that *hurt* transferred a lesson from a churning surface to a frozen one — see
+  the churn gate under [`recency-blind`](#recency-blind). Retained only as a caution about
+  transferring corrections across surface types.
