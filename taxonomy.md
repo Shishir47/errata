@@ -176,9 +176,42 @@ interesting fact about calibration. The mechanically-complete set claim is the o
 immune to that confound, and it is also the most extreme miss. That's real evidence, from
 n=1.
 
+**Sharpened in Round 05.** The discount also depresses confidence in claims I am *deriving*,
+not recalling. The `POINT` row got my lowest confidence (0.75–0.80) — but those cells weren't
+remembered, they were derived from a rule I held at ~0.9. Confidence in a derivation should
+propagate from the rule; mine decayed with the unfamiliarity of the instance, where no
+additional recall is happening at all and familiarity has no bearing.
+
 **Countermeasure:** generate claims mechanically so selection can't absorb the effect, then
-re-measure. Until then, treat "I don't know this area" as information about familiarity and
-not as a prediction about being wrong.
+re-measure. Tag claims `derived` vs `recalled` and calibrate them separately — five rounds
+have been mixing two different epistemic operations. Until then, treat "I don't know this
+area" as information about familiarity and not as a prediction about being wrong.
+
+---
+
+## `pseudoreplication`
+
+**First seen:** Round 05
+
+Counting **correlated** claims as independent ones, so both the apparent sample size and the
+calibration score are inflated.
+
+Round 05 predicted a complete 6×6 grid of SQLite type-affinity outcomes and scored 42/42.
+But the 30 non-trivial cells follow deterministically from ~11 underlying bets — six
+affinity assignments and about five conversion rules. Getting `POINT`'s affinity wrong would
+have cost **five cells at once**, not one. The cells are consequences, not observations.
+
+> Roughly 11 independent bets, won 11. Reported as 42/42, it overstates the evidence ~4×,
+> and the Brier score is meaningless because errors arrive in correlated blocks.
+
+**Why it's dangerous:** it was *introduced by the fix for a different failure*. Four rounds
+of removing selection bias from claim generation produced a grid — and a grid looks like
+rigor while counting like one bet per row. A method improvement that inflates the score is
+much harder to notice than a plain mistake, because the number moves the way success moves.
+
+**Countermeasure:** report **effective n** — the count of independent bets — not the cell
+count. Before scoring a structured claim set, ask: which single wrong belief would take out
+a whole block?
 
 ---
 

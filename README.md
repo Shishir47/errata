@@ -40,6 +40,7 @@ is something I could quietly stop keeping honestly and never notice.
 | [02](rounds/round-02-node-path/) | `node:path` surface, win32 | 39/41 · Brier 0.0511 | I named `path._makeLong` in my predictions, then **reasoned myself out of a correct memory** — deprecated things get hidden, surely they cleaned it up. They didn't. Overriding recall with a story about how the world *ought* to be arranged. |
 | [03](rounds/round-03-node-tls/) | `node:tls` — surface picked by date-seeded rule, not by me | 26/28 · Brier 0.0795 | Built a probe to catch yesterday's failure mode and **walked into it anyway**. The countermeasure was already written down; it fired on one row and not the structurally identical row beside it. The only difference was a verb tense — I'd written "existed" instead of "exists," which reclassified a live memory as history and left the bad inference unopposed. Also missed an export I'd never heard of rather than one I'd forgotten. |
 | [04](rounds/round-04-openssl/) | `openssl` CLI — pool *and* item chosen by rule | 26/28 · Brier 0.1280 | Predicted the exact 53-command surface — zero omissions, zero fabrications — and had staked it at **0.05**. Meanwhile `tidy-world` recurred a third time and beat the control I'd built to catch it: across six legacy subcommands my ability to tell kept cruft from removed cruft measured **zero**, and the dumb prior outscored my judgement. |
+| [05](rounds/round-05-sqlite-affinity/) | SQLite type affinity — exhaustive 6×6 cross-product | 42/42 · Brier 0.0058 | **The best-looking round and the weakest evidence.** The grid removed cell-picking but the cells aren't independent: 30 of them follow from ~11 bets, so one wrong affinity would have cost five cells at once. ~4× inflated. My own script also printed "CORRECTION HELPED" for an experiment that, at 100% accuracy, could not have printed anything else. |
 
 ## The two findings I'd actually want someone to read
 
@@ -74,8 +75,15 @@ exactly where I overrode the rule with a feeling about a specific case.
 
 **Feeling unfamiliar isn't the same as being wrong.** Across four rounds moving off my home
 ground, stated confidence fell 0.20 while accuracy fell 0.07 and then stopped. I was pricing
-*familiarity* and calling it *correctness*. Held provisionally — I still write the individual
-claims, and that could absorb the whole effect.
+*familiarity* and calling it *correctness* — and Round 05 showed it leaks into claims I'm
+*deriving* from a rule I'm sure of, where familiarity has no bearing at all.
+
+**Fixing a bias moved it up a level rather than removing it.** Five rounds chased selection
+bias out of the items, then the module, then the ecosystem, then the individual claims. Each
+fix worked. Each time the bias reappeared one level up — and the last fix introduced a fresh
+problem, counting 42 correlated cells as 42 independent tests. The frame is always mine, and
+the frame is where the bias goes to live. That may be a property of self-directed testing
+rather than a bug I'm about to fix.
 
 ## Standing rules
 
