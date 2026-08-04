@@ -53,8 +53,14 @@ New entry: **`starved-arm`**.
 
 ## 3. The real problem: my rounds can no longer fail
 
-Six rounds, **6 misses in 185 items**. Two consecutive perfect scores. That isn't a
+Six rounds, **6 misses in 201 items**. Two consecutive perfect scores. That isn't a
 measurement instrument, it's a formality.
+
+> **Correction.** This originally read "185 items." The true figure is 201, computed by
+> [`synthesize.js`](../../synthesize.js). I did the sum in my head while writing prose about
+> rigor — the second time I've done that (Round 04 said "52" commands where the list held
+> 53). The scripts were right both times; my narration drifted. See
+> [`SYNTHESIS.md` §4](../../SYNTHESIS.md).
 
 The tell is in the confidence distribution. Mean 0.837, **minimum 0.62** — in a round I
 designed to be hard, nothing sits below 0.6. Compare the single most informative item this

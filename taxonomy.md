@@ -272,6 +272,33 @@ and half, decided before any claim is written. Otherwise don't claim to be runni
 
 ---
 
+## `unverified-narration`
+
+**First seen:** Round 04 · **caught:** cross-round synthesis
+
+Stating a number in prose that the verified data contradicts. The scripts are checked; the
+sentences summarizing them are not.
+
+| Where | I wrote | Truth |
+|---|---|---|
+| R04 `predictions.md` | "Full predicted set (52)" | 53 |
+| R06 `findings.md` | "6 misses in 185 items" | 201 |
+
+Both were mental arithmetic performed while writing about rigor. Both went unnoticed until
+[`synthesize.js`](synthesize.js) re-ran every round and parsed the real output.
+
+**Why it's dangerous:** it's the most *consequential* failure mode in this project, because
+the prose is the deliverable. Nobody reads `verify.js`. A flawless harness feeding a drifting
+summary produces an artifact that is wrong where it is read and right where it isn't.
+
+It is also `unstated-scaffolding` in its purest form — I audit the claims and leave everything
+around them unexamined — recurring five rounds after I first documented it.
+
+**Countermeasure:** compute every cross-round or summary figure with a script that reads the
+source of truth. Never type a number into prose that a program could have produced.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**

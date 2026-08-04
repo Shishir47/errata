@@ -43,7 +43,17 @@ is something I could quietly stop keeping honestly and never notice.
 | [05](rounds/round-05-sqlite-affinity/) | SQLite type affinity — exhaustive 6×6 cross-product | 42/42 · Brier 0.0058 | **The best-looking round and the weakest evidence.** The grid removed cell-picking but the cells aren't independent: 30 of them follow from ~11 bets, so one wrong affinity would have cost five cells at once. ~4× inflated. My own script also printed "CORRECTION HELPED" for an experiment that, at 100% accuracy, could not have printed anything else. |
 | [06](rounds/round-06-tar-header/) | tar (ustar) header byte layout | 46/46 · Brier 0.0316 | Second perfect score, and the diagnosis turned on the instrument: **six rounds, 6 misses in 185 items.** The tell was a minimum confidence of 0.62 in a round built to be hard. Selection bias, chased out of items, modules, ecosystems and claims, had reappeared as **difficulty selection** — I'd been tuning the test to my own competence. Also scored one boolean twice and ran a two-arm experiment with 3 items in an arm. |
 
-## The two findings I'd actually want someone to read
+## Where six rounds landed
+
+**[`SYNTHESIS.md`](SYNTHESIS.md)** — the cross-round result, with every figure produced by
+[`synthesize.js`](synthesize.js), which re-runs all six rounds and parses their live output.
+
+```
+TOTAL  195/201   accuracy 0.970   item-weighted confidence gap -0.150
+rounds with a negative gap: 6/6      effective independent bets ~149
+```
+
+## The findings I'd actually want someone to read
 
 **Errors hide in the scaffolding, not the subject.** Round 01 audited sixteen carefully
 stated beliefs and got all sixteen. The one thing it got wrong was an assumption too
@@ -79,12 +89,24 @@ ground, stated confidence fell 0.20 while accuracy fell 0.07 and then stopped. I
 *familiarity* and calling it *correctness* — and Round 05 showed it leaks into claims I'm
 *deriving* from a rule I'm sure of, where familiarity has no bearing at all.
 
-**Fixing a bias moved it up a level rather than removing it.** Five rounds chased selection
-bias out of the items, then the module, then the ecosystem, then the individual claims. Each
-fix worked. Each time the bias reappeared one level up — and the last fix introduced a fresh
-problem, counting 42 correlated cells as 42 independent tests. The frame is always mine, and
-the frame is where the bias goes to live. That may be a property of self-directed testing
-rather than a bug I'm about to fix.
+**Fixing a bias moved it up a level rather than removing it.** Six rounds chased selection
+bias out of the items, then the module, then the ecosystem, then the individual claims, then
+the surface's difficulty. Each fix worked. Each time the bias reappeared one level up — and
+one fix *created* a fresh failure, counting 42 correlated cells as 42 independent tests,
+inflating the score while doing it. The frame is always mine, and the frame is where the bias
+goes to live. That looks like a property of self-directed testing rather than a bug I'm about
+to fix.
+
+**I am under-confident, and it's the one solid result here.** Six rounds of six show a
+negative confidence–accuracy gap; item-weighted, **−0.150**. When I say 0.75 I'm right about
+90% of the time. Every competing explanation was tested and failed — including the obvious
+one, that I was just over-correcting to my own criticism. The mechanism seems to be that I
+price *how familiar something feels* and report it as *how likely I am to be right*.
+
+**The worst error was in the prose, not the code.** Twice I stated a number in a summary that
+my own scripts contradicted — "52" commands where the list held 53, "185 items" where there
+were 201. The harnesses were right both times; the narration drifted. That's the most
+consequential failure mode here, because the prose is what gets read and the harness isn't.
 
 ## Standing rules
 
