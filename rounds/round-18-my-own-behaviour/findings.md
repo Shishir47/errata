@@ -43,6 +43,14 @@ object-level miss rate    : 7.1%   (28 misses in 396 items)
 **Wrong, and backwards.** My tool success rate (97.1%) is *better* than my claim accuracy
 (92.9%).
 
+> **Reopened in Round 21.** The 2.9% comes from `is_error`, which counts only tool-level
+> failures. Counting conservative *behavioural* traces instead — retry pairs, self-correction
+> markers, Write→Edit on the same path — gives ~26 incidents in 274 calls, **≈9.5%**, which is
+> *above* the 7.1% object-level rate. So this item may have been **right**, and the instrument
+> wrong. Not flipped, because the traces aren't strictly comparable — but the verdict is now
+> uncertain rather than established. `self-model-by-anecdote` survives on its volume evidence
+> (three replications), not on this number.
+
 I reasoned from a vivid list I could recite: a static server broken by path separators, a
 missing `python`, a `TZ=` flag that did nothing, CRLF defeating a parser, `rev` not existing,
 two mangled heredocs, an aggregator that silently skipped a round. Every one real. Together
