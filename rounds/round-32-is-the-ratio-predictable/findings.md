@@ -71,6 +71,13 @@ ratio 35%) and would have over-corrected elsewhere.
 > by roughly ±19pp on any given surface. Round 31 proved that trying to do better with a
 > self-forecast makes it worse.
 
+> **Overturned in Round 33.** Task type — pre-registered rather than post-hoc — separates the
+> ratio by **68 percentage points** (derive 88%, estimate 20%). The ratio *is* conditionable,
+> just not on any statistic of the round. I dismissed the correct predictor for having n=1 cells
+> while testing three that were confounded or circular; the dismissal was reasonable and wrong.
+> And the 0.60 constant turns out to be the mean of a **bimodal** distribution, describing
+> neither mode.
+
 ## 4. Task type is the most promising lead, and I can't test it
 
 ```

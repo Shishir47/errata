@@ -81,6 +81,7 @@ const EFFECTIVE = {
   'round-27-binary-comparisons': 16, // independent pairs (resolver fixed R29)
   'round-30-scale-correction': 16,  // independent file sizes
   'round-31-magic-numbers':   15,   // independent format inferences
+  'round-33-task-type':       24,   // two pre-declared blocks
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +
