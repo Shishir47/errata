@@ -58,7 +58,15 @@ const EFFECTIVE = {
   'round-06-tar-header':      25,   // duplicated R/O scoring + a self-consistency item
   'round-07-awk':             31,   // L2 and L6 share one root error
   'round-08-curl-exit-codes': 29,   // independent arbitrary facts
+  'round-09-errno':           32,   // independent arbitrary facts
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +
             `  (inflation ${(tot / eff).toFixed(2)}x)`);
+
+// Caveats that a parsed headline number cannot carry on its own.
+console.log('\n  CAVEATS');
+console.log('    round-09: the parsed 24/32 is KEYWORD scoring. Under the committed-claim');
+console.log('              scoring it is 31/32 -- 8 of the 9 "misses" were instrument');
+console.log('              artefacts, not knowledge errors. See its findings.md.');
+console.log('    round-05: 42 cells collapse to ~11 independent bets (pseudoreplication).');

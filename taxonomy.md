@@ -379,6 +379,36 @@ it lately) — I have been writing the same number for both.
 
 ---
 
+## `overcorrected-instrument`
+
+**First seen:** Round 09
+
+Fixing a flaw in how I measure by introducing its mirror image.
+
+Round 08's keyword scoring leaked **false positives** — `SSL` matched curl exit code 35 but
+appears throughout curl's descriptions. Round 09's fix required each keyword to be
+*distinguishing*: present in the target message, absent from all 126 others.
+
+It produced **eight false negatives out of eight misses**. Every one of them was factually
+exact — `ECONNRESET` → "Connection reset by peer", `ELIBEXEC` → "Cannot exec a shared library
+directly" — and failed only because errno messages are a family that shares vocabulary by
+design. A globally unique token is a far stricter demand than correct knowledge.
+
+> Round 05: fixing selection bias created `pseudoreplication`.
+> Round 09: fixing false positives created false negatives.
+
+**Why it's dangerous:** it is the relocation pattern operating on **instruments** rather than
+on selection, and it costs a whole round each time. Both instruments in R08/R09 disagreed with
+strict scoring in *both* directions — 8 false negatives and 1 false positive between them — so
+neither reading was clean.
+
+**Countermeasure:** score against the **committed claim itself**, not a proxy token; a proxy is
+a shortcut and both versions of this shortcut failed. And pre-register the *scoring rule* with
+the same care as the predictions — two rounds have now been lost to instrument design rather
+than to being wrong.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
