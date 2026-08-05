@@ -409,6 +409,43 @@ than to being wrong.
 
 ---
 
+## `authored-pool`
+
+**First seen:** Round 10 (present since Round 04)
+
+Rule-based selection performed inside a candidate list I wrote from memory — so every control
+downstream of it inherits my familiarity bias, while *looking* rigorous.
+
+Rounds 03–09 selected surfaces by date-seeded index from this list, typed out in Round 04:
+
+```
+awk cmake curl dotnet ffmpeg gcc git go java jq openssl perl php
+powershell python rustc sed sqlite3 ruby tar
+```
+
+```
+distinct executables on PATH : 6001
+my hand-written pool         :   20   (0.3%)
+```
+
+Nine rounds of increasingly careful selection machinery operating on three tenths of one
+percent of the available surfaces — and not a random three tenths, but the ones I could name
+off the top of my head.
+
+**How it surfaced:** the difficulty quota rejected two consecutive surfaces (`git`, then
+`powershell`, whose alias scheme turned out to be systematically *derivable* rather than
+recalled). Two rejections looked like bad luck. They were the pool running out of things I
+don't know.
+
+**Why it's dangerous:** it sat upstream of every control I had built, for seven rounds, while
+the date-seeded index made selection *feel* solved. A bias one level above your controls is
+invisible precisely because the controls are working.
+
+**Countermeasure:** [`select-surface.sh`](select-surface.sh) — pool is every executable on
+PATH, index is `(YYYYMMDD + round) % pool_size`, advance on usability failure, log every skip.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**

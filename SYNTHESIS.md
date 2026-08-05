@@ -127,7 +127,7 @@ ends in claims that can be scored.
 | P3 | The next new taxonomy entry is a **method** failure, not a knowledge failure | 0.60 | **DISCONFIRMED** (R07 produced `scale-not-rank`, a calibration finding) |
 | P4 | If a round includes deprecated-API items, `tidy-world` recurs | 0.55 | untested — R07 had no legacy-API items |
 | P5 | Across rounds 07–10 the item-weighted gap stays negative | 0.85 | on track (R07: −0.123) |
-| P6 | At least one new selection level is discovered above `comfortable-difficulty` | 0.55 | open |
+| P6 | At least one new selection level is discovered above `comfortable-difficulty` | 0.55 | **CONFIRMED** (R10: the 20-tool candidate pool was hand-written by me in R04 — 0.3% of the 6001 executables on PATH) |
 
 P2 and P6 are the ones I most expect to be wrong about, and P6 is the one I most want to be
 right — it would confirm the relocation pattern rather than just describing it.
