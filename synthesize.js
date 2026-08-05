@@ -9,6 +9,7 @@ const roundsDir = path.join(__dirname, 'rounds');
 const rounds = fs.readdirSync(roundsDir).filter(d => /^round-/.test(d)).sort();
 
 const rows = [];
+const unparseable = [];
 for (const r of rounds) {
   const dir = path.join(roundsDir, r);
   let out;
@@ -20,7 +21,13 @@ for (const r of rounds) {
   }
   const score = out.match(/(?:scored|===)\s+(\d+)\/(\d+)/);
   const conf  = out.match(/mean (?:stated|scored) confidence\s+([\d.]+)\s+Brier\s+([\d.]+)/);
-  if (!score || !conf) { console.error(`  !! ${r}: could not parse`); continue; }
+  // Round 26: unparseable rounds were being SILENTLY dropped from every total.
+  // Fail loudly instead -- a missing round is a wrong denominator, not a warning.
+  if (!score || !conf) {
+    console.error(`  !! ${r}: COULD NOT PARSE -- excluded from totals (fix its output or add it here)`);
+    unparseable.push(r);
+    continue;
+  }
   const [, right, n] = score.map(Number);
   const [, meanConf, brier] = conf.map(Number);
   rows.push({ round: r, right, n, acc: right / n, meanConf, brier, gap: meanConf - right / n });
@@ -70,6 +77,7 @@ const EFFECTIVE = {
   'round-21-behavioural-traces': 5, // independent counts
   'round-22-superseded-calls': 5,   // independent counts
   'round-25-spending-the-finding': 10, // independent unknowable facts
+  'round-26-compression-test': 26,  // two blocks, independent items
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +
@@ -81,3 +89,9 @@ console.log('    round-09: the parsed 24/32 is KEYWORD scoring. Under the commit
 console.log('              scoring it is 31/32 -- 8 of the 9 "misses" were instrument');
 console.log('              artefacts, not knowledge errors. See its findings.md.');
 console.log('    round-05: 42 cells collapse to ~11 independent bets (pseudoreplication).');
+
+if (unparseable.length) {
+  console.log(`\n  !! ${unparseable.length} round(s) EXCLUDED from all totals above:`);
+  for (const r of unparseable) console.log(`       ${r}`);
+  console.log('     Totals are therefore incomplete. (Found in Round 26.)');
+}
