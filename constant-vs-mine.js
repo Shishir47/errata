@@ -30,6 +30,16 @@ const ROUNDS = {
     [0.45,1],[0.55,1],[0.50,1],[0.40,1],[0.25,1],[0.45,1],[0.60,1],[0.55,1],
     [0.60,1],[0.50,1],[0.55,1],[0.65,1],[0.45,1],[0.70,1],
   ],
+  'R14 cygpath': [
+    [0.80,1],[0.55,1],[0.30,0],[0.40,1],[0.50,1],[0.60,1],[0.65,1],[0.45,1],[0.70,1],
+    [0.50,1],[0.55,1],[0.60,1],[0.60,1],[0.40,1],[0.25,1],[0.45,1],[0.70,1],[0.35,0],
+    [0.65,1],[0.40,0],[0.30,1],[0.55,1],[0.75,1],[0.60,1],[0.40,1],[0.75,1],
+  ],
+  'R15 less long forms': [
+    [0.25,1],[0.20,1],[0.40,1],[0.50,1],[0.45,1],[0.45,1],[0.65,1],[0.85,1],[0.60,1],
+    [0.70,1],[0.55,1],[0.70,1],[0.45,1],[0.55,1],[0.50,1],[0.60,1],[0.65,1],[0.60,1],
+    [0.40,1],[0.55,1],[0.55,1],
+  ],
 };
 
 const brier = (items, f) =>
@@ -77,3 +87,11 @@ const errs = all.filter(([, ok]) => !ok).map(([c]) => c);
 console.log(`\n  mean stated confidence across all ${all.length} items: ${mean.toFixed(3)}`);
 console.log(`  confidences attached to the ${errs.length} actual errors: ${errs.map(c => c.toFixed(2)).join(', ')}`);
 console.log(`  errors rated ABOVE my own mean: ${errs.filter(c => c > mean).length}/${errs.length}`);
+
+// The sub-0.5 record across every externally-supplied round.
+const sub = all.filter(([c]) => c < 0.5);
+const subOk = sub.filter(([, ok]) => ok).length;
+console.log(`\n  items stated BELOW 0.5 confidence: ${subOk}/${sub.length} correct = ${(subOk / sub.length).toFixed(3)}`);
+console.log(`  their mean stated confidence     : ${(sub.reduce((s, [c]) => s + c, 0) / sub.length).toFixed(3)}`);
+console.log(`  i.e. when I say "probably wrong", I am right ~${Math.round(subOk / sub.length * 100)}% of the time`);
+
