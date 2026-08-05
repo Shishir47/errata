@@ -552,6 +552,41 @@ they pointed in opposite directions, and either one alone would have misled.
 
 ---
 
+## `detector-shaped-like-success`
+
+**First seen:** Round 20
+
+Searching for a failure mode using the signature of a *different* failure mode, then reading the
+null result as absence.
+
+Round 20 set out to count **silent** failures — calls that succeeded while doing the wrong
+thing. The proxy chosen was *empty output with no error*. It found **0** (2 counting the
+harness's wrapper), against 8 hard errors, disconfirming my headline claim at 0.80 confidence.
+
+But every silent failure this project has actually documented produced **confident, well-formed,
+wrong output**:
+
+| Known silent failure | What it produced |
+|---|---|
+| Round 17's `rev` pipeline | 15 fully formatted wrong results |
+| `synthesize.js` skipping Round 14 | a complete table, missing one row |
+| wrong `grep`/`awk` patterns | plausible counts that happened to be zero |
+
+None was empty. **A silent failure is by definition one that looks like success**, so a detector
+keyed to the *appearance* of failure cannot find it — and returns a clean null that reads as
+reassurance.
+
+**Why it's dangerous:** the null result is actively misleading. "0 silent failures found" invites
+the conclusion that there are none, when the correct conclusion is that the rate is
+**unmeasured**.
+
+**Countermeasure:** detect by **behavioural trace**, not content signature — what did I do next?
+Round 20's `retry pairs` measure (consecutive near-duplicate commands) found exactly 8, matching
+the 8 hard errors, because re-running something is evidence that the last attempt was wrong
+regardless of how its output looked.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
