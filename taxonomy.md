@@ -782,6 +782,37 @@ least wrong in a stable direction.
 
 ---
 
+## `circular-predictor`
+
+**First seen:** Round 32
+
+Testing whether X predicts Y when **X is a component of Y's definition** — recovering the
+construction and reading it as a relationship.
+
+Round 32 asked whether the skill-claimed ratio could be predicted from anything known in
+advance, and put **mean confidence** on the candidate list. The ratio is defined as:
+
+```
+ratio = (mean confidence − floor) / (accuracy − floor)
+```
+
+Mean confidence is the numerator. It duly produced the strongest correlation on the board
+(**r = +0.764**), disconfirming the round's pre-registered FF4 and nearly reversing its
+conclusion.
+
+Accuracy — the *denominator*, which should push the ratio down — came out at **+0.443**, because
+accuracy and confidence are themselves correlated. Contaminated too, just less visibly.
+
+**Why it's dangerous:** it manufactures the strongest result in an analysis, so it wins on
+exactly the criterion used to pick findings. And it is invisible unless you write the outcome's
+formula next to the predictor list — the two usually live in different parts of a script.
+
+**Countermeasure:** before running any correlation, write the outcome variable's formula and
+check each candidate predictor against it. One line of thought. Anything appearing in the
+numerator or denominator is disqualified, not discounted.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
