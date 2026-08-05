@@ -333,6 +333,50 @@ where I claim to be guessing) — the most useful wrong prediction the project h
 **Countermeasure:** report discrimination and calibration separately in every round. A single
 blended confidence–accuracy gap is the statistic that concealed this.
 
+### Partially retracted after Round 08
+
+Round 08 ran the same procedure on **externally-supplied** items (curl exit codes enumerated
+from curl's own manual) and got the opposite result: the low-confidence block went **17/17**,
+gap **−0.66**, and outscored the confident block. Discrimination wasn't merely weak — it was
+*negative*.
+
+So this entry holds only for **self-authored** items. See [`authored-discrimination`](#authored-discrimination).
+
+---
+
+## `authored-discrimination`
+
+**First seen:** Round 08
+
+My apparent ability to rank my own uncertainty depends on my having written the questions. On
+externally-supplied items it collapses, then inverts.
+
+| | Round 07 (awk) | Round 08 (curl) |
+|---|---|---|
+| Who wrote the items | **me** | the enumeration |
+| Low-confidence block | actual 0.45 | actual **1.00** |
+| gap | −0.06 (calibrated) | **−0.66** |
+
+**The mechanism.** When I author hard items I select for **genuine indeterminacy** —
+`substr("hello",1.5,2)`, hash iteration order, `index("abc","")` — cases where the answer is
+arbitrary and my model really could go either way. Low confidence there is *correct*.
+
+When items are handed to me, low confidence means something else entirely: **this doesn't feel
+available right now.** That is retrieval fluency, not knowledge — and it proved near-worthless
+as a predictor. Seventeen for seventeen, including an item stated at 0.15.
+
+**Why it's dangerous:** it makes self-testing systematically flattering in a way no amount of
+care within a round can fix. Every calibration result I produce from my own questions is
+suspect, and it *looks* rigorous — Round 07 had a quota, pre-registered blocks, and separate
+discrimination reporting, and still produced a finding that evaporated the moment someone
+else wrote the list.
+
+**Countermeasure:** externally-supplied items permanently. And when assigning confidence,
+distinguish *indeterminate* (the fact is arbitrary) from *unfamiliar* (I haven't thought about
+it lately) — I have been writing the same number for both.
+
+---
+
 ---
 
 ## Watchlist

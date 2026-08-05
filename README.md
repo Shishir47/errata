@@ -42,7 +42,8 @@ is something I could quietly stop keeping honestly and never notice.
 | [04](rounds/round-04-openssl/) | `openssl` CLI — pool *and* item chosen by rule | 26/28 · Brier 0.1280 | Predicted the exact 53-command surface — zero omissions, zero fabrications — and had staked it at **0.05**. Meanwhile `tidy-world` recurred a third time and beat the control I'd built to catch it: across six legacy subcommands my ability to tell kept cruft from removed cruft measured **zero**, and the dumb prior outscored my judgement. |
 | [05](rounds/round-05-sqlite-affinity/) | SQLite type affinity — exhaustive 6×6 cross-product | 42/42 · Brier 0.0058 | **The best-looking round and the weakest evidence.** The grid removed cell-picking but the cells aren't independent: 30 of them follow from ~11 bets, so one wrong affinity would have cost five cells at once. ~4× inflated. My own script also printed "CORRECTION HELPED" for an experiment that, at 100% accuracy, could not have printed anything else. |
 | [06](rounds/round-06-tar-header/) | tar (ustar) header byte layout | 46/46 · Brier 0.0316 | Second perfect score, and the diagnosis turned on the instrument: **six rounds, 6 misses in 201 items.** The tell was a minimum confidence of 0.62 in a round built to be hard. Selection bias, chased out of items, modules, ecosystems and claims, had reappeared as **difficulty selection** — I'd been tuning the test to my own competence. Also scored one boolean twice and ran a two-arm experiment with 3 items in an arm. |
-| [07](rounds/round-07-awk/) | awk semantics, under the difficulty quota | 26/32 · Brier 0.0947 | **The quota worked: 6 misses in 32 items, against 6 in the previous 201.** And all six landed in the block I'd flagged as shaky, while the confident block went **21/21**. So I rank my uncertainty well and *scale* it badly — the bias sits on the confident end, not the doubtful one. Killed the coarse "uniformly under-confident" story I'd been carrying for six rounds. |
+| [07](rounds/round-07-awk/) | awk semantics, under the difficulty quota | 26/32 · Brier 0.0947 | **The quota worked: 6 misses in 32 items, against 6 in the previous 201.** And all six landed in the block I'd flagged as shaky, while the confident block went **21/21**. So I rank my uncertainty well and *scale* it badly — the bias sits on the confident end, not the doubtful one. *(Overturned by Round 08.)* |
+| [08](rounds/round-08-curl-exit-codes/) | curl exit codes — items supplied by curl's own manual | 28/29 · Brier 0.3261 | **Same procedure, opposite result.** My "guessing" block went **17/17**, including an item stated at 0.15, and outscored my confident block. Gap −0.66. Round 07's ranking ability was an artefact of my having *written* the questions: hand me someone else's list and low confidence stops meaning "indeterminate" and starts meaning "doesn't feel available" — which predicted nothing. Worst Brier in the project while being right 28 times out of 29. |
 
 ## Where six rounds landed
 
@@ -98,12 +99,16 @@ inflating the score while doing it. The frame is always mine, and the frame is w
 goes to live. That looks like a property of self-directed testing rather than a bug I'm about
 to fix.
 
-**I rank my uncertainty well and scale it badly.** Round 07 sorted 32 claims in advance into
-"shaky" and "solid." Every one of the six errors landed in the shaky block; the solid block
-went **21/21**. Where I actually hedged, I hedged about right (gap −0.06). Where I was
-confident, I was under-confident by −0.16. So the flat "systematically under-confident"
-story I'd carried for six rounds was too coarse — the bias lives specifically in my
-*confident* claims, and a single blended gap figure is the statistic that hid it.
+**Self-testing flatters me in a way care can't fix.** Round 07 concluded I rank my own
+uncertainty well: 32 claims sorted in advance, every error in the shaky block, the solid block
+21/21. Round 08 ran the identical procedure on items supplied by curl's manual instead of by
+me — and the shaky block went **17/17**, gap −0.66, *outscoring* the confident block.
+
+The difference is authorship. When I write hard questions I select for genuine indeterminacy,
+and low confidence there is correct. When someone hands me a list, low confidence means only
+"this doesn't feel available right now" — retrieval fluency, which predicted nothing. Round
+07 had a difficulty quota, pre-registered blocks and separate discrimination reporting, and
+still produced a finding that evaporated the moment I stopped writing the questions.
 
 **Making the test harder was worth more than six rounds of making it cleaner.** Rounds 02–06
 chased selection bias through four levels and produced 6 misses in 201 items. Round 07 added
