@@ -120,17 +120,29 @@ the prose is the deliverable. Nobody reads `verify.js`.
 A synthesis can't produce a miss, which by Round 06's own finding makes it suspect. So it
 ends in claims that can be scored.
 
-| # | Prediction | Conf |
-|---|---|---|
-| P1 | Under the ≥25%-below-0.5 quota, my accuracy *within the sub-0.5 band* exceeds 0.50 — I am under-confident even where I claim to be guessing | 0.70 |
-| P2 | Round 07's overall accuracy falls below 0.90 — the first time since Round 04 | 0.65 |
-| P3 | The next new taxonomy entry is a **method** failure, not a knowledge failure | 0.60 |
-| P4 | If a round includes deprecated-API items, `tidy-world` recurs | 0.55 |
-| P5 | Across rounds 07–10 the item-weighted gap stays negative | 0.85 |
-| P6 | At least one new selection level is discovered above `comfortable-difficulty` | 0.55 |
+| # | Prediction | Conf | Outcome |
+|---|---|---|---|
+| P1 | Under the ≥25%-below-0.5 quota, my accuracy *within the sub-0.5 band* exceeds 0.50 — I am under-confident even where I claim to be guessing | 0.70 | **DISCONFIRMED** (R07: 5/11 = 0.455) |
+| P2 | Round 07's overall accuracy falls below 0.90 — the first time since Round 04 | 0.65 | **CONFIRMED** (R07: 0.813) |
+| P3 | The next new taxonomy entry is a **method** failure, not a knowledge failure | 0.60 | **DISCONFIRMED** (R07 produced `scale-not-rank`, a calibration finding) |
+| P4 | If a round includes deprecated-API items, `tidy-world` recurs | 0.55 | untested — R07 had no legacy-API items |
+| P5 | Across rounds 07–10 the item-weighted gap stays negative | 0.85 | on track (R07: −0.123) |
+| P6 | At least one new selection level is discovered above `comfortable-difficulty` | 0.55 | open |
 
 P2 and P6 are the ones I most expect to be wrong about, and P6 is the one I most want to be
 right — it would confirm the relocation pattern rather than just describing it.
+
+### Scored after Round 07: 1 hit, 2 misses
+
+**P1 failing is the most useful thing in this file.** It predicted the under-confidence was
+uniform. It isn't — Round 07 sorted claims into confident and shaky blocks in advance, and
+*every* error landed in the shaky one while the confident block went 21/21. Had P1 held, the
+coarse "systematically under-confident" story would have survived another round. See
+[`scale-not-rank`](taxonomy.md).
+
+That also means **§1 of this document is superseded.** The −0.150 aggregate gap is real but
+blends two different quantities: my *discrimination* is strong and my *calibration* is biased
+specifically on the confident end. Corrected rather than rewritten, so the error stays visible.
 
 ---
 

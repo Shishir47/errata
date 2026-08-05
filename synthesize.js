@@ -56,6 +56,7 @@ const EFFECTIVE = {
   'round-04-openssl':         28,
   'round-05-sqlite-affinity': 11,   // 30 cells collapse to ~11 bets
   'round-06-tar-header':      25,   // duplicated R/O scoring + a self-consistency item
+  'round-07-awk':             31,   // L2 and L6 share one root error
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +

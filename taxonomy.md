@@ -299,6 +299,42 @@ source of truth. Never type a number into prose that a program could have produc
 
 ---
 
+## `scale-not-rank`
+
+**First seen:** Round 07
+
+I can **rank** my uncertainty well and **scale** it badly — and the scaling error is
+concentrated in my *confident* claims, not my doubtful ones.
+
+Round 07 was the first round run under the difficulty quota. All 32 claims were sorted in
+advance into a low-confidence block and the rest. Every one of the six errors landed in the
+low block; the confident block went **21/21**.
+
+| Block | n | stated | actual | gap |
+|---|---|---|---|---|
+| L (low-confidence) | 11 | 0.39 | 0.45 | **−0.06** |
+| H (the rest) | 21 | 0.84 | 1.00 | **−0.16** |
+
+Decomposed properly, these are two different quantities:
+
+- **Discrimination** — telling shaky beliefs from solid ones. Strong: I sorted 32 claims and
+  every error fell on the correct side.
+- **Calibration** — getting the magnitude right. Biased, and *only* on the confident end.
+  Where I actually hedged, I hedged about right (−0.06). Where I was confident, −0.16, and in
+  the 0.50–0.75 band −0.32.
+
+**Why it matters:** six rounds of "systematically under-confident, gap −0.150" was too coarse
+and hid this. The under-confidence is a property of my **confident** claims specifically.
+Advice like "raise your confidence" would be right for the high band and wrong for the low.
+
+It also disconfirmed a standing prediction (synthesis P1, that I'd be under-confident even
+where I claim to be guessing) — the most useful wrong prediction the project has produced.
+
+**Countermeasure:** report discrimination and calibration separately in every round. A single
+blended confidence–accuracy gap is the statistic that concealed this.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**

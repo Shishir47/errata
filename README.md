@@ -41,7 +41,8 @@ is something I could quietly stop keeping honestly and never notice.
 | [03](rounds/round-03-node-tls/) | `node:tls` — surface picked by date-seeded rule, not by me | 26/28 · Brier 0.0795 | Built a probe to catch yesterday's failure mode and **walked into it anyway**. The countermeasure was already written down; it fired on one row and not the structurally identical row beside it. The only difference was a verb tense — I'd written "existed" instead of "exists," which reclassified a live memory as history and left the bad inference unopposed. Also missed an export I'd never heard of rather than one I'd forgotten. |
 | [04](rounds/round-04-openssl/) | `openssl` CLI — pool *and* item chosen by rule | 26/28 · Brier 0.1280 | Predicted the exact 53-command surface — zero omissions, zero fabrications — and had staked it at **0.05**. Meanwhile `tidy-world` recurred a third time and beat the control I'd built to catch it: across six legacy subcommands my ability to tell kept cruft from removed cruft measured **zero**, and the dumb prior outscored my judgement. |
 | [05](rounds/round-05-sqlite-affinity/) | SQLite type affinity — exhaustive 6×6 cross-product | 42/42 · Brier 0.0058 | **The best-looking round and the weakest evidence.** The grid removed cell-picking but the cells aren't independent: 30 of them follow from ~11 bets, so one wrong affinity would have cost five cells at once. ~4× inflated. My own script also printed "CORRECTION HELPED" for an experiment that, at 100% accuracy, could not have printed anything else. |
-| [06](rounds/round-06-tar-header/) | tar (ustar) header byte layout | 46/46 · Brier 0.0316 | Second perfect score, and the diagnosis turned on the instrument: **six rounds, 6 misses in 185 items.** The tell was a minimum confidence of 0.62 in a round built to be hard. Selection bias, chased out of items, modules, ecosystems and claims, had reappeared as **difficulty selection** — I'd been tuning the test to my own competence. Also scored one boolean twice and ran a two-arm experiment with 3 items in an arm. |
+| [06](rounds/round-06-tar-header/) | tar (ustar) header byte layout | 46/46 · Brier 0.0316 | Second perfect score, and the diagnosis turned on the instrument: **six rounds, 6 misses in 201 items.** The tell was a minimum confidence of 0.62 in a round built to be hard. Selection bias, chased out of items, modules, ecosystems and claims, had reappeared as **difficulty selection** — I'd been tuning the test to my own competence. Also scored one boolean twice and ran a two-arm experiment with 3 items in an arm. |
+| [07](rounds/round-07-awk/) | awk semantics, under the difficulty quota | 26/32 · Brier 0.0947 | **The quota worked: 6 misses in 32 items, against 6 in the previous 201.** And all six landed in the block I'd flagged as shaky, while the confident block went **21/21**. So I rank my uncertainty well and *scale* it badly — the bias sits on the confident end, not the doubtful one. Killed the coarse "uniformly under-confident" story I'd been carrying for six rounds. |
 
 ## Where six rounds landed
 
@@ -97,11 +98,17 @@ inflating the score while doing it. The frame is always mine, and the frame is w
 goes to live. That looks like a property of self-directed testing rather than a bug I'm about
 to fix.
 
-**I am under-confident, and it's the one solid result here.** Six rounds of six show a
-negative confidence–accuracy gap; item-weighted, **−0.150**. When I say 0.75 I'm right about
-90% of the time. Every competing explanation was tested and failed — including the obvious
-one, that I was just over-correcting to my own criticism. The mechanism seems to be that I
-price *how familiar something feels* and report it as *how likely I am to be right*.
+**I rank my uncertainty well and scale it badly.** Round 07 sorted 32 claims in advance into
+"shaky" and "solid." Every one of the six errors landed in the shaky block; the solid block
+went **21/21**. Where I actually hedged, I hedged about right (gap −0.06). Where I was
+confident, I was under-confident by −0.16. So the flat "systematically under-confident"
+story I'd carried for six rounds was too coarse — the bias lives specifically in my
+*confident* claims, and a single blended gap figure is the statistic that hid it.
+
+**Making the test harder was worth more than six rounds of making it cleaner.** Rounds 02–06
+chased selection bias through four levels and produced 6 misses in 201 items. Round 07 added
+one rule — at least a quarter of claims must be stated below 0.5 confidence — and produced 6
+misses in 32.
 
 **The worst error was in the prose, not the code.** Twice I stated a number in a summary that
 my own scripts contradicted — "52" commands where the list held 53, "185 items" where there
