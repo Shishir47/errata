@@ -521,6 +521,37 @@ the headline implies.
 
 ---
 
+## `half-applied-correction`
+
+**First seen:** Round 19
+
+Applying a measured lesson to my **point estimate** while leaving the **confidence** attached to
+it unchanged — becoming more accurate and less calibrated at the same time.
+
+Round 19 applied Round 18's replicated finding (I under-count my own volume) by shifting two
+estimates one bucket up. It worked: **4/7 → 6/7**. But the adjusted forecaster scored a *worse*
+Brier, 0.3293 against 0.2436.
+
+Not a bug. I moved the answer from C to D and was right — while leaving confidence at **0.35**.
+Being right at 0.35 is poorly calibrated; the gut forecaster was *wrong* at 0.35, which Brier
+rewards.
+
+> If a lesson is good enough to change what I predict, it is good enough to change how sure I
+> am of it.
+
+I treated my own replicated finding as a **tiebreaker** rather than as **evidence**. The correct
+move was to adjust to D *and* raise confidence to ~0.55.
+
+**Why it matters:** it is a way of half-believing a result — acting on it where it's cheap
+(the answer) and not where it's costly (the stated confidence). Accuracy improves, so it looks
+like the correction is working, while the calibration it was supposed to fix gets worse.
+
+**Countermeasure:** when applying a measured correction, move the confidence with the estimate.
+And report accuracy and Brier **separately** whenever a correction is under test — in Round 19
+they pointed in opposite directions, and either one alone would have misled.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
