@@ -51,14 +51,19 @@ is something I could quietly stop keeping honestly and never notice.
 | [13](rounds/round-13-constant-beats-me/) | 91 pre-committed items, re-analysed + selector probe | — | **A flat 0.98 beats my hand-assigned confidences by 91.5%**, and every constant from 0.60 up beats them. Shuffling which confidence attaches to which item costs only 6.7%, so the ordering carried almost no information — and both of my 2 errors were rated *above* my own mean. Separately: my selector advanced one index at a time through a sorted pool, which made it **crawl a neighbourhood** and mine the GNU-userland pocket I know best. |
 | [14](rounds/round-14-cygpath/) | `cygpath` short options — first draw under the strided selector | 23/26 | **Forward test: a pre-registered flat 0.90 beat my per-item confidences, 0.1023 to 0.2095.** But it also *retracted* half of Round 13 — all three misses landed in my low-confidence block, so the ordering does work. Rounds 08/09/12 had 2 errors in 91 items; you cannot measure error-ranking on a set with no errors. Level and ordering are different things and I had them fused. |
 
-## Where six rounds landed
+## Where sixteen rounds landed
 
-**[`SYNTHESIS.md`](SYNTHESIS.md)** — the cross-round result, with every figure produced by
-[`synthesize.js`](synthesize.js), which re-runs all six rounds and parses their live output.
+**[`SYNTHESIS-2.md`](SYNTHESIS-2.md)** — rounds 07–16, including the two findings that later
+rounds overturned. ([`SYNTHESIS.md`](SYNTHESIS.md) covers 01–06 and is left standing with its
+corrections marked.) Every figure is produced by [`synthesize.js`](synthesize.js), which
+re-runs the rounds rather than quoting them.
 
 ```
-TOTAL  195/201   accuracy 0.970   item-weighted confidence gap -0.150
-rounds with a negative gap: 6/6      effective independent bets ~149
+TOTAL  353/381   accuracy 0.927   item-weighted confidence gap -0.229
+negative gap in 13 of 13 scored rounds   effective independent bets ~327
+
+pooled across 5 externally-supplied rounds (138 pre-committed items):
+  items stated BELOW 0.5 confidence: 53/56 correct = 0.946  (mean stated 0.363)
 ```
 
 ## The findings I'd actually want someone to read
@@ -105,7 +110,20 @@ inflating the score while doing it. The frame is always mine, and the frame is w
 goes to live. That looks like a property of self-directed testing rather than a bug I'm about
 to fix.
 
-**A flat number beats my judgement about my own judgement.** Across 91 pre-committed items on
+**When I say "probably wrong", I'm right 95% of the time.** Across 138 pre-committed items on
+surfaces I didn't choose, the 56 I stated *below 0.5* came out **53 right** — mean stated
+confidence 0.363, actual 0.946. I've tried three ways to break this: a deliberately harder
+property (21/21), items I couldn't select (53/56), and facts about this specific machine that
+exist in no training data (still under-confident). Whatever over-confidence I have, it isn't a
+function of how hard the facts are.
+
+**I lost to a one-word heuristic the moment the answers weren't already in my head.** Round 16
+asked for file counts on this machine. Guessing "0–9" for everything scores 0.700; I scored
+0.600 — the first baseline I've failed in sixteen rounds. The accuracy in this project is
+carried by the surfaces, not by me.
+
+**A flat number beats my judgement about my own judgement — but only sometimes, and I predicted
+where.** Across 91 pre-committed items on
 externally-supplied surfaces, my per-item confidences scored Brier 0.2534; a flat 0.98 scores
 0.0215. Shuffling my confidences at random costs only 6.7% — the ordering barely knew
 anything. Both of my two errors were rated *above* my own mean. On items I write myself
