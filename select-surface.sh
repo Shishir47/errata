@@ -12,7 +12,15 @@
 # Rules, declared in advance:
 #   1. Pool = every distinct executable name on PATH.
 #   2. Index = (YYYYMMDD + round) % pool_size.
-#   3. Advance one index if a candidate fails ANY usability gate:
+#   3. Advance by a COPRIME STRIDE (997) on failure, never by one.
+#      Round 13: advancing one index at a time through an alphabetically sorted
+#      pool turns a uniform draw into a local walk. At a ~2.4% pass rate the
+#      cursor moves ~40 places and never leaves one neighbourhood -- which
+#      yielded fgrep, file, gawk, gawk-5.0.0, grep: all GNU userland, adjacent,
+#      and one package counted twice. That is pseudoreplication in the selection.
+#      997 is prime and coprime with the pool size, so the stride cycles the
+#      whole pool and scatters draws across it.
+#   3b. A candidate fails the usability gate if:
 #        a. not invocable
 #        b. --help / -h yields fewer than 20 lines
 #        c. fewer than 20 enumerable option tokens (no item set to predict against)
@@ -34,13 +42,15 @@ fi
 
 N=$(wc -l < "$POOL_FILE")
 SEED=$(date +%Y%m%d)
-i=$(( (SEED + ROUND) % N ))
-echo "pool: $N executables on PATH   seed: $SEED   start index: $i"
+STRIDE=997                      # prime, coprime with pool size -- see rule 3
+START=$(( (SEED + ROUND) % N ))
+echo "pool: $N executables on PATH   seed: $SEED   start: $START   stride: $STRIDE"
 
-tried=0; found=0
-while [ $tried -lt 200 ] && [ $found -lt "$DRAWS" ]; do
+tried=0; found=0; k=0
+while [ $tried -lt 400 ] && [ $found -lt "$DRAWS" ]; do
+  i=$(( (START + k * STRIDE) % N ))
   name=$(sed -n "$((i+1))p" "$POOL_FILE")
-  i=$(( (i+1) % N )); tried=$((tried+1))
+  k=$((k+1)); tried=$((tried+1))
 
   case " $USED " in *" $name "*) echo "  skip $name (already used)"; continue;; esac
   command -v "$name" >/dev/null 2>&1 || continue
