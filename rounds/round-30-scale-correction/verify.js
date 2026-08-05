@@ -44,6 +44,10 @@ for (const r of results)
     (r.size ? `  (${(r.size/1024).toFixed(0)} KB)` : '') + `  ${r.name}`);
 
 console.log(`\n=== ${right}/${n} right   accuracy ${acc.toFixed(3)}   (floor ${FLOOR})`);
+// Line required by synthesize.js -- omitting it silently excludes the round from
+// every total. Round 26 added the loud failure that caught exactly that here.
+console.log(`mean stated confidence ${mean(c => c).toFixed(3)}   Brier ${bMine.toFixed(4)}`);
+console.log(`gap (confidence - accuracy) ${(mean(c => c) - acc).toFixed(3)}`);
 console.log(`unscoreable: ${unscoreable} of ${results.length}`);
 
 console.log(`\n=== THREE FORECASTERS ===`);
