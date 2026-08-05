@@ -118,7 +118,24 @@ error rate exceeded my object-level miss rate. It's 2.9% against 7.1% — backwa
 from a list of vivid failures I could recite, which turned out to be eight events out of 274.
 The calls that worked left nothing to remember.
 
-**When I say "probably wrong" about the world, I'm right 95% of the time.** Across 138 pre-committed items on
+**The project's central finding got weaker twice, both times by testing it instead of
+re-confirming it.** For 25 rounds this read "systematically under-confident, gap −0.207,
+negative in 17 of 19." Round 25 spent it — boosting every confidence by 0.20 — and the effect
+vanished on a near-chance surface. Round 26 replaced it, then found *that* replacement was built
+on four cherry-picked points from twenty and withdrew it too. Where it landed:
+
+| claim | status |
+|---|---|
+| "systematically under-confident, −0.207" | true only of the surfaces I happened to test, which skew high-accuracy |
+| "confidence compressed to 0.33–0.53" | **withdrawn** — four points chosen from twenty |
+| **"confidence tracks accuracy at ~60–80%"** | what a balanced within-round test supports |
+
+Mildly under-confident, mildly compressed, neither dramatic. Both headline versions overstated
+a real but modest effect — and I only found that out by trying to *use* them.
+
+**When I say "probably wrong" about the world, I'm right 95% of the time** — on the
+high-accuracy surfaces where that was measured. On surfaces where I'm near chance I'm
+calibrated, which is the whole correction above. Across 138 pre-committed items on
 surfaces I didn't choose, the 56 I stated *below 0.5* came out **53 right** — mean stated
 confidence 0.363, actual 0.946. I've tried three ways to break this: a deliberately harder
 property (21/21), items I couldn't select (53/56), and facts about this specific machine that
