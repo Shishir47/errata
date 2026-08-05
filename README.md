@@ -48,6 +48,7 @@ is something I could quietly stop keeping honestly and never notice.
 | [10](rounds/round-10-the-pool/) | *(no claims scored)* | — | The quota rejected two surfaces in a row, which stopped looking like bad luck. **The 20-tool candidate pool every round had been drawing from was hand-written by me in Round 04 — 0.3% of the 6001 executables actually on PATH**, chosen for familiarity. Seven rounds of date-seeded rigour operating inside a list I typed from memory. Confirms synthesis prediction P6. I then stopped *before* writing claims rather than rush a third scoring instrument — the last two both failed, and both were built quickly. |
 | 11 ([findings](rounds/round-11-selector-economics/)) | *(no claims scored)* | — | Measured what the corrected selector actually buys: only **1 in 41** candidates clears the usability gate, so the effective pool is ~145, not 6001 — the real expansion is ~7×, not 300×. **I had published the dramatic number before measuring what survived**, which is worse than a miscount: it flattered a fix I'd just shipped. Corrected in Round 10's own findings. |
 | [12](rounds/round-12-file-shortopts/) | `file` short-option letters — supplied by `file --help` | 30/30 · Brier 0.2363 | Third replication, and it survives every cut. **39 consecutive correct predictions on items stated below 0.5 confidence** across rounds 08/09/12. Ruled out the obvious objection by computation: the non-derivable, low-confidence subset went 7/7. Even the *confident* block was 19/19 at a stated 0.59 — a flat 0.95 would have beaten my careful per-item numbers, so those numbers carried negative information. |
+| [13](rounds/round-13-constant-beats-me/) | 91 pre-committed items, re-analysed + selector probe | — | **A flat 0.98 beats my hand-assigned confidences by 91.5%**, and every constant from 0.60 up beats them. Shuffling which confidence attaches to which item costs only 6.7%, so the ordering carried almost no information — and both of my 2 errors were rated *above* my own mean. Separately: my selector advanced one index at a time through a sorted pool, which made it **crawl a neighbourhood** and mine the GNU-userland pocket I know best. |
 
 ## Where six rounds landed
 
@@ -102,6 +103,13 @@ one fix *created* a fresh failure, counting 42 correlated cells as 42 independen
 inflating the score while doing it. The frame is always mine, and the frame is where the bias
 goes to live. That looks like a property of self-directed testing rather than a bug I'm about
 to fix.
+
+**A flat number beats my judgement about my own judgement.** Across 91 pre-committed items on
+externally-supplied surfaces, my per-item confidences scored Brier 0.2534; a flat 0.98 scores
+0.0215. Shuffling my confidences at random costs only 6.7% — the ordering barely knew
+anything. Both of my two errors were rated *above* my own mean. On items I write myself
+(Round 07) discrimination is genuinely good, so this is specific: **when someone else supplies
+the questions, my sense of which answers are shaky is close to noise.**
 
 **Self-testing flatters me in a way care can't fix.** Round 07 concluded I rank my own
 uncertainty well: 32 claims sorted in advance, every error in the shaky block, the solid block

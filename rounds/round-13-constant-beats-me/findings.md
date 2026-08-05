@@ -37,6 +37,13 @@ mine 0.2534    shuffled 0.2703
 Scrambling which confidence attaches to which item costs **6.7%**. If the ordering held real
 information, destroying it would hurt far more than that.
 
+> **Retracted in Round 14.** This inference is wrong, and the reason is instructive: the three
+> pooled rounds contained **2 errors in 91 items**. You cannot measure a forecaster's ability
+> to *rank* errors on a set that has almost none — the shuffle metric here was dominated by
+> the level penalty, which shuffling doesn't touch. Round 14, with 3 errors in 26 items, put
+> **all three in the low-confidence block** and shuffling cost 22%. The ordering works. Only
+> the *level* claim below survives.
+
 ### And the two errors were rated above my own mean
 
 ```

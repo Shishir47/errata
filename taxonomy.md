@@ -446,6 +446,38 @@ PATH, index is `(YYYYMMDD + round) % pool_size`, advance on usability failure, l
 
 ---
 
+## `local-walk`
+
+**First seen:** Round 13
+
+Advancing **one index at a time** through a sorted pool converts a uniform draw into a local
+walk, so the sample is a contiguous neighbourhood rather than a draw from the whole pool.
+
+The Round 10 selector drew from 6001 PATH executables and advanced by one on failure. At a
+~2.4% gate pass rate the cursor moves ~40 places — never leaving one alphabetical
+neighbourhood. Its yield:
+
+```
+fgrep  file  gawk  gawk-5.0.0  grep
+```
+
+All GNU userland, all adjacent, and `gawk` / `gawk-5.0.0` are the same package counted twice.
+Swapping to a coprime stride (997) and probing 40 scattered candidates found **zero** passes
+against the sequential walk's five — so the pool is far more hostile than local sampling
+implied, and the walk had been mining the one dense pocket where the gate passes. That pocket
+is the userland I know best.
+
+**Why it's dangerous:** it is `pseudoreplication` in the **selection** rather than in the
+claims, and it defeated a fix specifically built to remove selection bias. The pool was
+genuinely corrected in Round 10; the *traversal* quietly re-imposed the bias the correction
+had removed.
+
+**Countermeasure:** advance by a stride coprime with the pool size, so the walk cycles the
+whole pool instead of crawling a neighbourhood. Committed to
+[`select-surface.sh`](select-surface.sh).
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**

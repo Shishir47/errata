@@ -60,6 +60,7 @@ const EFFECTIVE = {
   'round-08-curl-exit-codes': 29,   // independent arbitrary facts
   'round-09-errno':           32,   // independent arbitrary facts
   'round-12-file-shortopts':  30,   // independent arbitrary facts
+  'round-14-cygpath':         26,   // independent arbitrary facts
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +
