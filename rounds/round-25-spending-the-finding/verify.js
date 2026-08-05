@@ -3,6 +3,7 @@
 
 const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
+const { statOf } = require('../../resolve-path');
 
 const P = [
   ['euiccscsp.dll', 'B', 0.30], ['kbdcz.dll', 'A', 0.45],
@@ -13,19 +14,10 @@ const P = [
   ['w32time.dll', 'C', 0.30], ['windows.services.targetedcontent.dll', 'C', 0.30],
 ];
 
-const which = n => {
-  try { return execFileSync('bash', ['-c', `command -v "$1"`, '_', n], { encoding: 'utf8' }).trim(); }
-  catch { return ''; }
-};
-const winPath = p => p.replace(/^\/([a-z])\//, (_, d) => d.toUpperCase() + ':/');
 const bucket = b => b < 32 * 1024 ? 'A' : b < 128 * 1024 ? 'B' : b < 512 * 1024 ? 'C' : 'D';
 
 const results = P.map(([name, claim, conf]) => {
-  const p = which(name);
-  let size = null;
-  for (const cand of [winPath(p), p]) {
-    try { size = fs.statSync(cand).size; break; } catch { /* next */ }
-  }
+  const _r = statOf(name); let size = _r ? _r.size : null;
   return { name, claim, conf, size,
            actual: size === null ? '(unreadable)' : bucket(size),
            scoreable: size !== null,

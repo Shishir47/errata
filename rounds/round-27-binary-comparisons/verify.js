@@ -3,16 +3,9 @@
 
 const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
+const { statOf } = require('../../resolve-path');
 
-const which = n => { try {
-  return execFileSync('bash', ['-c', `command -v "$1"`, '_', n], { encoding: 'utf8' }).trim();
-} catch { return ''; } };
-const winPath = p => p.replace(/^\/([a-z])\//, (_, d) => d.toUpperCase() + ':/');
-const sizeOf = n => {
-  const p = which(n);
-  for (const c of [winPath(p), p]) { try { return fs.statSync(c).size; } catch {} }
-  return null;
-};
+const sizeOf = n => { const r = statOf(n); return r ? r.size : null; };
 
 const P = [
   ['eventaggregation.dll','icsigd.dll','A',0.60],

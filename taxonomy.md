@@ -697,6 +697,40 @@ on — the old finding was true of one band and asserted of all of them.
 
 ---
 
+## `cheap-to-shrug`
+
+**First seen:** Round 29 (present since Round 16)
+
+A small recurring loss that never justifies stopping to fix on its own, and compounds into
+distorted conclusions.
+
+A path-translation bug silently dropped items in three rounds — **4** in Round 16, **2** in
+Round 25, **6** in Round 27. Each time the round still had enough items to report, so each time
+fixing it lost to finishing the round. Twelve items cumulatively.
+
+When finally fixed, those twelve items **flipped four pre-registered results**:
+
+| result | before | after |
+|---|---|---|
+| R25 gap | +0.033 ("I was calibrated") | **−0.085** |
+| R25 `Y3` | DISCONFIRMED | **CONFIRMED** |
+| R27 `AA4` | DISCONFIRMED (n=2) | **CONFIRMED (n=3)** |
+| R28 `BB1` | DISCONFIRMED (78%) | **CONFIRMED (61%)** |
+
+Round 25's headline — *"the under-confidence vanished, I was calibrated"* — was substantially an
+artefact of eight files my code couldn't open. And the 45–166% spread that led Round 28 to
+declare variance "the finding" **was the bug**; corrected, all seven rounds fall in 40–92% with
+no over-claiming.
+
+**Why it's dangerous:** the loss is always *below the threshold that would justify acting on it*,
+and the skipped items are invisible in the results — they show as a slightly smaller n, not as
+an error. The bug also has no advocate: nothing in the output argues for fixing it.
+
+**Countermeasure:** treat an unscoreable-item rate above ~10% as a **bug, not attrition**. Round
+27 lost 37.5% and should have stopped. Re-run the full aggregate after any harness repair.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**

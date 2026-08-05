@@ -19,9 +19,13 @@ const ROUNDS = [
   ['round-12-file-shortopts',  0.037, 'a letter or "none", ~27 ways', 1.000, 0.527],
   ['round-14-cygpath',         0.037, 'a letter or "none", ~27 ways', 0.885, 0.529],
   ['round-16-machine-state',   0.250, '4 size buckets',               0.600, 0.440],
-  ['round-25-spending',        0.250, '4 size buckets',               0.300, 0.333],
+  // R25 and R27 corrected in Round 29 after fixing the path-resolution bug that
+  // had silently dropped 8 items between them. Pre-fix figures kept for the record:
+  //   R25 was acc 0.300 / conf 0.333 -> 166%   (unstable, denominator 0.05)
+  //   R27 was acc 0.800 / conf 0.635 ->  45%   (10 items instead of 16)
+  ['round-25-spending',        0.250, '4 size buckets',               0.417, 0.333],
   ['round-26-compression',     0.127, 'weighted: 15 opts + 11 buckets',0.692, 0.596],
-  ['round-27-binary',          0.500, 'which of two files is larger',  0.800, 0.635],
+  ['round-27-binary',          0.500, 'which of two files is larger',  0.813, 0.625],
 ];
 
 const EXCLUDED = [
