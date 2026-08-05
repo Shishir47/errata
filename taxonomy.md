@@ -751,6 +751,37 @@ an error. The bug also has no advocate: nothing in the output argues for fixing 
 
 ---
 
+## `precision-on-a-bad-anchor`
+
+**First seen:** Round 31
+
+Refining a correction's *mechanism* while leaving it dependent on an estimate I am demonstrably
+poor at — so the added precision amplifies the bad input instead of the good structure.
+
+Round 30's scale correction used a crude global divisor (0.61) and **worked** — Brier 0.2642 →
+0.2334. Round 31 replaced it with something more principled: anchor the scale to **my own
+predicted accuracy for the round**.
+
+```
+predicted accuracy 0.60      actual 0.933
+MINE   Brier 0.0941   ->   SCALED Brier 0.1733
+```
+
+The mechanism compressed my confidence to 0.600 when the correct move was to stretch it to
+0.933. Nearly double the error.
+
+**The irony is exact:** Rounds 18–22 established that I am poor at predicting my own
+performance. I then built a correction whose only input is a prediction of my own performance.
+
+> A crude constant is more robust than a precise mechanism anchored to an estimate I'm bad at.
+
+**Countermeasure:** never anchor a correction to a self-estimate. Use the surface's own history,
+a crude constant, or nothing. Precision in the mechanism is worthless if it multiplies a number
+I can't produce reliably — and it is *worse* than crudeness, because a fixed constant is at
+least wrong in a stable direction.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
