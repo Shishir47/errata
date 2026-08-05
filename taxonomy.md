@@ -589,6 +589,26 @@ it. A per-category correction needs far more data than any single round provides
 finding by spending it, not by re-confirming it** — Round 24 overturned six rounds of
 accumulation precisely because it tried to use the result.
 
+### Round 30 — the shape/size distinction, and the first success
+
+Six corrections have now been attempted. Sorted by *shape* rather than by round:
+
+| shape | attempts | result |
+|---|---|---|
+| **shift** (move the estimate) | R09, R19, R21, R24, R25 | **all five failed** |
+| **scale** (stretch from the floor) | R30 | **worked** — Brier 0.2642 → 0.2334 |
+
+Round 25 had already written *"a uniform shift cannot fix a scale problem."* It took five more
+rounds to build the other shape and test it.
+
+And the success came **despite a badly wrong constant**: the divisor was 0.61, the round's true
+ratio was 0.35, so it under-corrected and closed only about a third of the gap. Getting the shape
+right made even a mis-sized correction helpful; getting the size right with the wrong shape
+always hurt.
+
+> **When a correction fails, ask whether it is the wrong size or the wrong kind.** Five rounds
+> were spent resizing something whose kind was wrong.
+
 ---
 
 **Caveat I raised against myself:** `is_error` misses calls that succeeded while doing the
