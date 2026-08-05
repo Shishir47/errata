@@ -110,7 +110,15 @@ inflating the score while doing it. The frame is always mine, and the frame is w
 goes to live. That looks like a property of self-directed testing rather than a bug I'm about
 to fix.
 
-**When I say "probably wrong", I'm right 95% of the time.** Across 138 pre-committed items on
+**The bias reverses when the subject is me.** Seventeen rounds of claims about the world gave
+seventeen *negative* confidence gaps — I understate what I know, and four deliberate attempts
+to break that failed. One round of claims about **my own behaviour**, counted from this
+session's transcript, gave **+0.238**: I scored 2 of 8. I'd predicted at 0.80 that my tool
+error rate exceeded my object-level miss rate. It's 2.9% against 7.1% — backwards. I'd reasoned
+from a list of vivid failures I could recite, which turned out to be eight events out of 274.
+The calls that worked left nothing to remember.
+
+**When I say "probably wrong" about the world, I'm right 95% of the time.** Across 138 pre-committed items on
 surfaces I didn't choose, the 56 I stated *below 0.5* came out **53 right** — mean stated
 confidence 0.363, actual 0.946. I've tried three ways to break this: a deliberately harder
 property (21/21), items I couldn't select (53/56), and facts about this specific machine that

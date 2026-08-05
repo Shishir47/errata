@@ -64,6 +64,7 @@ const EFFECTIVE = {
   'round-15-less-longforms':  21,   // independent arbitrary facts
   'round-16-machine-state':    9,   // /bin and /usr/bin share one wrong model
   'round-17-composition':     15,   // independent per-word transforms
+  'round-18-my-own-behaviour': 8,   // independent counts
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +

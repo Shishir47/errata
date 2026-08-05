@@ -478,6 +478,49 @@ whole pool instead of crawling a neighbourhood. Committed to
 
 ---
 
+## `self-model-by-anecdote`
+
+**First seen:** Round 18
+
+I estimate my own behaviour from **memorable episodes** rather than base rates — and failures
+are what's memorable.
+
+Round 18 predicted, at 0.80 confidence, that my first-try tool error rate exceeded my
+object-level miss rate. Counted from this session's transcript:
+
+```
+first-try tool error rate : 2.9%   (8 errors in 274 calls)
+object-level miss rate    : 7.1%   (28 misses in 396 items)
+```
+
+Wrong, and backwards. I had reasoned from a list I could recite — a static server broken by
+path separators, a missing `python`, a `TZ=` flag that did nothing, CRLF defeating a parser,
+`rev` not existing, two mangled heredocs. All real; all **eight events out of 274**. The 266
+calls that worked left nothing to recall.
+
+Both distortions run the same way:
+
+| | claimed | actual |
+|---|---|---|
+| Bash / Write / Edit calls | 40–79 / 20–39 / 15–34 | **110 / 70 / 72** |
+| total errors | 10–24 | **8** |
+
+**I under-count what I did and over-count how often it went wrong.**
+
+**Why it matters:** this is where the project's central finding *reverses*. Seventeen rounds
+of object-level claims produced seventeen negative gaps; one round about myself produced
+**+0.238**. Under-confidence governs claims about the world, not claims about me.
+
+**Countermeasure:** never estimate my own rates from recollection. Count them. The transcript
+exists; the memory doesn't.
+
+**Caveat I raised against myself:** `is_error` misses calls that succeeded while doing the
+wrong thing (Round 17's `rev` pipeline exited 0 with empty output). Adding known silent
+failures puts the true rate nearer 4–5% — still below 7.1%, but by a much narrower margin than
+the headline implies.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
