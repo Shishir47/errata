@@ -36,6 +36,12 @@ were a claim, when it asserts nothing at all.
 **Every earlier round's gap is understated by this correction**, since all of them had non-zero
 chance floors and none adjusted for it.
 
+> **Wrong, corrected in Round 28.** Computed across all seven rounds with a clean floor, the
+> mean skill claimed is **78%**, ranging 45–166%. This round's 45% was the *worst case*, not the
+> typical one, and the correction makes the picture **more variable** rather than uniformly
+> deeper. I extrapolated a seven-round relationship from a single round — in the same document
+> that introduced the correction.
+
 ## 2. The disconfirming condition did not fire
 
 AA3 said: if the gap came out above +0.10, I am over-confident in the 0.5–1.0 band and Round
