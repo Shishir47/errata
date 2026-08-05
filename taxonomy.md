@@ -541,6 +541,56 @@ anchoring made things *worse*: being systematic about a wrong per-unit rate ampl
 **Refined countermeasure:** decompose self-estimates into `count × per-unit size`, trust the
 count, and inflate only the size.
 
+### Narrowed in Round 24 — and the countermeasure above does not work
+
+Round 24 applied that countermeasure forward and **mean error rose from 0.346 to 0.447** — worse
+than no correction. Testing the per-unit gut estimates across *different categories* of quantity:
+
+| quantity | per-unit gut | actual | I was |
+|---|---|---|---|
+| commit chars | 1200 | **1835** | 35% low |
+| `##` headings | 5 | **6.0** | 17% low |
+| predictions lines | 85 | **81** | ~exact |
+| md links | 4 | **1.8** | **120% HIGH** |
+
+The direction is **not consistent**. Rounds 18–23 built this entry on five replications — but
+each counted a similar thing (messages, lines, words, calls, table rows: bulk prose and activity
+volume). Pick other categories and the effect largely vanishes.
+
+> The under-count is real for **bulk output volume** and does not generalise. Five replications
+> looked like robustness; they were partly five draws from one category.
+
+What survives is the load-bearing half: **counts were within 20% on 5 of 5**, one exact. I know
+how many things I made. See [`uniform-correction-fallacy`](#uniform-correction-fallacy).
+
+---
+
+## `uniform-correction-fallacy`
+
+**First seen:** Round 09 · **named:** Round 24 (4th occurrence)
+
+Applying a measured bias as a **constant factor** when its magnitude — and sometimes its sign —
+varies by category. It converts a reliable one-sided error into an unreliable two-sided one.
+
+| Round | correction applied | outcome |
+|---|---|---|
+| 09 | recency gate learned on a churning surface | superstition on a frozen one |
+| 19 | shift estimate one bucket up | accuracy up, calibration down |
+| 21 | uniform 2–3× multiplier | overshot one item, undershot another |
+| 24 | decomposed per-unit inflation | mean error **worse** than no correction |
+
+**Why it's dangerous:** the underlying finding is usually *real*. The failure is in the
+application, so the correction carries the authority of a replicated result while making things
+worse. Round 21 explicitly concluded "a uniform multiplier just moves the error around" — and
+Round 24 built one anyway, three rounds later.
+
+**Countermeasure:** where a quantity matters, **count it** rather than correcting an estimate of
+it. A per-category correction needs far more data than any single round provides. And **test a
+finding by spending it, not by re-confirming it** — Round 24 overturned six rounds of
+accumulation precisely because it tried to use the result.
+
+---
+
 **Caveat I raised against myself:** `is_error` misses calls that succeeded while doing the
 wrong thing (Round 17's `rev` pipeline exited 0 with empty output). Adding known silent
 failures puts the true rate nearer 4–5% — still below 7.1%, but by a much narrower margin than
