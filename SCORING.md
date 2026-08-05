@@ -48,6 +48,25 @@ By [`select-surface.sh`](select-surface.sh) — pool is every executable on PATH
 `(YYYYMMDD + round) % pool_size`, advance on usability failure, skip used surfaces, log every
 skip. The hand-written 20-tool pool retired in Round 10 is not to be used again.
 
+## 6b. Harness fault guards (added after Round 17)
+
+Round 17's first run scored **15/15 wrong** because the ground-truth pipeline used `rev`, which
+doesn't exist here — and the pipeline swallowed the failure, returning empty strings with exit
+status 0. Shipped, it would have reported a gap of **+0.818** and inverted the project's central
+finding.
+
+Every harness must therefore:
+
+1. **Abort on degenerate ground truth.** Empty, blank or uniformly-identical answers mean the
+   instrument failed. Never score them as my errors.
+2. **Verify external tools exist** before depending on them.
+3. **Not trust a pipeline's exit status.** A failing stage upstream of a succeeding one exits 0.
+4. **Cross-check** the computation by a second route where one is available.
+
+And the standing assumption: four instrument faults found in seventeen rounds is a *detection*
+rate, not an occurrence rate. A partial fault producing plausible wrong answers would not have
+been caught — and would have been more interesting than the truth.
+
 ## 7. Deviations
 
 Any departure from this file gets recorded in that round's `findings.md`, with a note of
