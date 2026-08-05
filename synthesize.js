@@ -69,6 +69,7 @@ const EFFECTIVE = {
   'round-20-silent-failures':  6,   // independent counts
   'round-21-behavioural-traces': 5, // independent counts
   'round-22-superseded-calls': 5,   // independent counts
+  'round-25-spending-the-finding': 10, // independent unknowable facts
 };
 const eff = rows.reduce((s, r) => s + (EFFECTIVE[r.round] ?? r.n), 0);
 console.log(`\n  reported items ${tot}  ->  effective independent bets ~${eff}` +

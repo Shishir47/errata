@@ -664,6 +664,39 @@ regardless of how its output looked.
 
 ---
 
+## `compressed-confidence-range`
+
+**First seen:** Round 25 · **supersedes the flat under-confidence finding**
+
+My stated confidence has **less dynamic range than my accuracy**. It sits compressed toward the
+middle while my accuracy swings across the whole scale.
+
+| round | surface | accuracy | mean confidence | gap |
+|---|---|---|---|---|
+| 12 | `file` short options | 1.000 | 0.527 | **−0.473** |
+| 15 | `less` long forms | 1.000 | 0.531 | **−0.469** |
+| 16 | PATH dir file counts | 0.600 | 0.440 | −0.160 |
+| 25 | system file sizes | 0.300 | 0.333 | **+0.033** |
+
+**Accuracy 0.30–1.00. Confidence 0.33–0.53.**
+
+For twenty-five rounds this project reported "systematically under-confident, gap −0.207,
+negative in 17 of 19." That was measured almost entirely on surfaces where I score 0.9+. Run a
+surface where I'm near chance and the gap closes to zero — I was **calibrated** in Round 25.
+
+**Why it matters:** it explains every calibration result the project produced, and it changes
+the prescription completely.
+
+- FLAT 0.90 beat me on high-accuracy surfaces (R13–15) — that's where I understate
+- FLAT scored 0.5700 here, catastrophically — that's where I don't
+- BOOSTED (+0.20 uniformly) failed in R25 because **a shift cannot fix a scale problem**
+
+**Countermeasure:** any correction must *stretch* confidences away from the middle, not move
+them. And no calibration claim should be made without stating the accuracy band it was measured
+on — the old finding was true of one band and asserted of all of them.
+
+---
+
 ## Watchlist
 
 Modes I suspect but haven't yet caught myself in with evidence. **These are not findings**
