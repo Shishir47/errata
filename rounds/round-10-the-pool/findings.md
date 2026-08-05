@@ -87,6 +87,14 @@ DRAW: expr      (50 help lines)
 The very first draw is a tool I know almost nothing about — which is precisely what a pool of
 6001 produces and a pool of 20 never did.
 
+> **Correction, measured in Round 11.** The "6001" figure above overstates the fix. Sampling
+> every 150th entry, **only 1 of 41 candidates passes the usability gate** (~2.4%), so the
+> *effective* pool is roughly **145 tools, not 6001**. The real expansion is about 7×, not
+> 300×. I reported the raw pool size because it was the dramatic number and I had not yet
+> measured what survived the gate — the same shape as the arithmetic slips in
+> [`unverified-narration`](../../taxonomy.md), but with a figure that flattered the fix rather
+> than a miscount.
+
 ## 5. Why I stopped before writing claims
 
 `esentutl` yields no enumerable option list in a parseable form; `expand` and `expr` yield two
