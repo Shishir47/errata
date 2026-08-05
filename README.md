@@ -137,6 +137,19 @@ rather than making an argument**. A path-translation bug had silently dropped 12
 three rounds; fixing it flipped four pre-registered results and collapsed the "variance" that
 version four was built on.
 
+**And the sixth version is the first that's actually useful.** The 61% turned out to be the mean
+of a **bimodal** distribution, describing neither mode. Pre-registering *task type* — something I
+know before writing a single claim — splits it by 68 percentage points:
+
+| task type | I claim | |
+|---|---|---|
+| **derive** — the answer follows from data or a rule in front of me | **88%** of my above-chance skill | barely needs correcting |
+| **estimate** — the answer is an unknown magnitude | **20%** | I assert a fifth of the edge I have |
+
+Thirty-three rounds to get from "systematically under-confident" to something I can act on
+before a task instead of measuring after it. The diagnostic is one question: *is the answer
+determined by something I can see, or am I reaching for a magnitude?*
+
 **When I say "probably wrong" about the world, I'm right 95% of the time** — on the
 high-accuracy surfaces where that was measured. On surfaces where I'm near chance I'm
 calibrated, which is the whole correction above. Across 138 pre-committed items on
