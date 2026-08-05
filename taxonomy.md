@@ -514,6 +514,33 @@ of object-level claims produced seventeen negative gaps; one round about myself 
 **Countermeasure:** never estimate my own rates from recollection. Count them. The transcript
 exists; the memory doesn't.
 
+### Localised in Round 23 — it's the per-unit size, not the count
+
+Estimating five quantities twice, once by gut and once by explicit anchored arithmetic:
+
+- anchored beat gut on **4 of 5**, cutting mean log-ratio error **27%** — reasoning helps
+- anchored was **also low on 4 of 5** — reasoning does not change the *direction*
+
+Splitting the anchors into their two factors shows why:
+
+| anchor | count assumed | actual | per-unit size assumed | actual |
+|---|---|---|---|---|
+| `verify.js` lines | 19 files | **19** ✓ | ~95 lines | **115** |
+| `findings.md` words | 20 files | **22** | ~700 words | **800** |
+
+> **I know how many things I made. I underestimate how big each one is.**
+
+This explains why awareness doesn't transfer (Round 22): the correction has to be applied to
+numbers I generate, and those are already low before the multiplication. Explicit arithmetic
+**launders the same bias** rather than removing it.
+
+The worst case was table rows — gut 250, anchored 185, actual **705**. The only quantity where
+anchoring made things *worse*: being systematic about a wrong per-unit rate amplifies it.
+**Systematicity is not safety.**
+
+**Refined countermeasure:** decompose self-estimates into `count × per-unit size`, trust the
+count, and inflate only the size.
+
 **Caveat I raised against myself:** `is_error` misses calls that succeeded while doing the
 wrong thing (Round 17's `rev` pipeline exited 0 with empty output). Adding known silent
 failures puts the true rate nearer 4–5% — still below 7.1%, but by a much narrower margin than
