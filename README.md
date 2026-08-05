@@ -128,10 +128,14 @@ on four cherry-picked points from twenty and withdrew it too. Where it landed:
 |---|---|
 | "systematically under-confident, −0.207" | true only of the surfaces I happened to test, which skew high-accuracy |
 | "confidence compressed to 0.33–0.53" | **withdrawn** — four points chosen from twenty |
-| **"confidence tracks accuracy at ~60–80%"** | what a balanced within-round test supports |
+| "confidence tracks accuracy at ~60–80%" | holds within-round |
+| "the variance is the finding" (45–166%) | **withdrawn** — the variance was a bug |
+| **"I claim ~61% of my above-chance skill"** | 7 rounds, 4 task types, range 40–92%, none over 100% |
 
-Mildly under-confident, mildly compressed, neither dramatic. Both headline versions overstated
-a real but modest effect — and I only found that out by trying to *use* them.
+The fifth version is the first that got *stronger*, and it came from **repairing an instrument
+rather than making an argument**. A path-translation bug had silently dropped 12 items across
+three rounds; fixing it flipped four pre-registered results and collapsed the "variance" that
+version four was built on.
 
 **When I say "probably wrong" about the world, I'm right 95% of the time** — on the
 high-accuracy surfaces where that was measured. On surfaces where I'm near chance I'm
